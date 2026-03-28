@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-secondary-50 text-secondary-900 dark:bg-secondary-950 dark:text-white transition-colors duration-300 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight font-bold;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/80 dark:bg-secondary-900/80 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-soft;
+  }
+
+  .btn-menu {
+    @apply flex flex-col items-center justify-center p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow rounded-2xl no-underline text-white font-medium;
+  }
+
+  .icon-svg {
+    @apply w-5 h-5 align-middle mr-1 fill-current;
+  }
+
+  .input-modern {
+    @apply w-full px-4 py-3 rounded-xl border border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-800 text-secondary-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 outline-none;
+  }
+}
+
+/* Mobile View Simulation */
+.mobile-view {
+  @apply bg-secondary-200 dark:bg-secondary-900;
+}
+
+.mobile-view #root {
+  max-width: 480px;
+  margin: 0 auto;
+  border-left: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  min-height: 100vh;
+  @apply bg-secondary-50 dark:bg-secondary-950 shadow-2xl;
+}
+
+.dark .mobile-view #root {
+  border-color: #1e293b;
+}

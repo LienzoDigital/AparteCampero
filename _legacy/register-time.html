@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Tiempos - Aparte Campero</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../assets/favicon.ico">
+</head>
+<body class="light-theme">
+    <header>
+        <img src="../assets/logo.svg" alt="Logo Aparte Campero" class="logo">
+        <div class="theme-switcher">
+            <button id="themeToggle" class="btn btn-sm btn-outline-secondary" title="Cambiar tema">
+                <img src="img/moon.svg" alt="Tema oscuro" class="icon-svg">
+            </button>
+            <button id="viewToggle" class="btn btn-sm btn-outline-primary" title="Cambiar vista">
+                <img src="img/phone.svg" alt="Vista móvil" class="icon-svg">
+            </button>
+        </div>
+    </header>
+
+    <main class="container fade-in">
+        <a href="../index.html" class="btn btn-secondary mb-3">
+            <img src="img/arrow-left.svg" class="arrow-left"> Volver al Menú
+        </a>
+        
+        <h2><img src="img/stopwatch.svg" class="stopwatch"> Registro de Tiempos</h2>
+        
+        <div class="card p-3 mb-3">
+            <form id="timeForm">
+                <div class="mb-3">
+                    <label for="teamSelect" class="form-label">Seleccionar Equipo</label>
+                    <select class="form-select" id="teamSelect" required>
+                        <option value="">Seleccionar equipo</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label">Pasada</label>
+                    <div class="btn-group w-100">
+                        <button type="button" class="btn btn-primary pass-btn active" data-pass="1">Pasada 1</button>
+                        <button type="button" class="btn btn-primary pass-btn" data-pass="2">Pasada 2</button>
+                        <button type="button" class="btn btn-primary pass-btn" data-pass="3">Pasada 3</button>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Cantidad de vacas</label>
+                    <div class="btn-group w-100">
+                        <button type="button" class="btn btn-primary cows-btn active" data-cows="3">3</button>
+                        <button type="button" class="btn btn-primary cows-btn" data-cows="2">2</button>
+                        <button type="button" class="btn btn-primary cows-btn" data-cows="1">1</button>
+                        <button type="button" class="btn btn-primary cows-btn" data-cows="0">0</button>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Tiempo</label>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <input type="number" class="form-control time-input" id="minutesInput" 
+                                       min="0" max="59" value="0" placeholder="00"
+                                       onfocus="clearIfZero(this)" onblur="restoreZero(this)">
+                                <span class="input-group-text">min</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <input type="number" class="form-control time-input" id="secondsInput" 
+                                       min="0" max="59" value="0" placeholder="00"
+                                       onfocus="clearIfZero(this)" onblur="restoreZero(this)">
+                                <span class="input-group-text">seg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Penalizaciones</label>
+                    <div class="btn-group w-100">
+                        <button type="button" class="btn btn-outline-danger penalty-btn" data-penalty="10">+10s</button>
+                        <button type="button" class="btn btn-outline-danger penalty-btn" data-penalty="20">+20s</button>
+                        <button type="button" class="btn btn-outline-danger penalty-btn" data-penalty="30">+30s</button>
+                    </div>
+                    <div class="mt-2 text-end">
+                        <span id="totalPenaltyDisplay">Penalización total: 0s</span>
+                    </div>
+                </div>
+                
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <img src="img/save.svg" class="save">Guardar Tiempo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/times.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cambiar initializeTimesPage(false) por initializeTimePage(false) en register-time.html
+            // Cambiar initializeTimesPage(true) por initializeTimePage(true) en capture-time.html
+            initializeTimePage(false); // o true para capture-time.html
+            
+            function clearIfZero(input) {
+                if (input.value === '0') input.value = '';
+            }
+            
+            function restoreZero(input) {
+                if (input.value === '' || isNaN(input.value)) {
+                    input.value = '0';
+                } else {
+                    const value = parseInt(input.value);
+                    input.value = Math.min(Math.max(value, 0), 59);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

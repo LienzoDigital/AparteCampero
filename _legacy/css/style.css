@@ -1,0 +1,446 @@
+/* =============================================
+   THEMES.CSS + STYLES.CSS - ESTILOS UNIFICADOS
+   ============================================= */
+
+:root {
+  /* Colores base - Tema claro */
+  --primary-color: #7f4724c0;
+  --secondary-color: #1e2ba7;
+  --accent-color: #e74c3c;
+  --background-color: #e6e6e6;
+  --card-bg: #e2e2e2;
+  --text-color: #333333;
+  --text-color-light: #666666;
+  --text-color-inverse: #ffffff;
+  --border-color: #dee2e6;
+  
+  /* Colores de botones */
+  --btn-primary: #2c3e50;
+  --btn-primary-hover: #1a252f;
+  --btn-success: #28a745;
+  --btn-success-hover: #218838;
+  --btn-danger: #dc3545;
+  --btn-danger-hover: #c82333;
+  --btn-info: #17a2b8;
+  --btn-info-hover: #138496;
+  --btn-warning: #ffc107;
+  --btn-warning-hover: #e0a800;
+  --btn-purple: #6f42c1;
+  --btn-purple-hover: #5a32a3;
+  --btn-text-color: #dddddd;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  
+  /* Transiciones */
+  --transition-fast: all 0.15s ease;
+  --transition-normal: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+  
+  /* Tamaños y espaciados base */
+  --font-size-base: 16px;
+  --element-spacing: 0.8rem;
+  --btn-padding: 1rem;
+  --btn-font-size: 1rem;
+}
+
+/* ======================
+   TEMA OSCURO
+   ====================== */
+.dark-theme {
+  --primary-color: white; /*#3498db;*/
+  --secondary-color: #2c3e50;
+  --accent-color: #e74c3c;
+  --background-color: #1a1a1a;
+  --card-bg: #2d2d2d;
+  --text-color: #f8f9fa;
+  --text-color-light: #cccccc;
+  --text-color-inverse: #333333;
+  --border-color: #444444;
+  
+  /* Ajustes de botones para modo oscuro */
+  --btn-primary: #3498db;
+  --btn-primary-hover: #2878a8;
+  --btn-text-color: #f8f9fa;
+  
+  /* Ajustes para botones con colores claros */
+  --btn-warning: #ffc107;
+  --btn-warning-hover: #e0a800;
+  
+  /* Sombras más pronunciadas en modo oscuro */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.25);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+/* ======================
+   ESTILOS BASE
+   ====================== */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: var(--transition-normal);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.penalizaciones {
+  background-color: #503411;
+}
+
+p {
+  margin-bottom: 1em;
+  color: var(--text-color);
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--text-color-inverse);
+}
+
+/* ======================
+   COMPONENTES
+   ====================== */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+  margin-bottom: var(--element-spacing);
+  padding: 1.5rem;
+  color: var(--text-color);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+.card-text {
+  color: var(--text-color-light);
+}
+
+/* Texto secundario */
+.text-muted {
+  color: var(--text-color-light) !important;
+}
+
+.text-inverse {
+  color: var(--text-color-inverse) !important;
+}
+
+/* ======================
+   ESTILOS DE BOTONES
+   ====================== */
+.btn, .btn-menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: var(--btn-padding);
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  color: var(--btn-text-color);
+  font-size: var(--btn-font-size);
+}
+
+/* Efecto hover para todos los botones */
+.btn:hover, .btn-menu:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Efecto active (clic) */
+.btn:active, .btn-menu:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Colores específicos para botones */
+.btn-primary, .btn-menu.btn-primary {
+  background-color: var(--btn-primary);
+}
+
+.btn-primary:hover, .btn-menu.btn-primary:hover {
+  background-color: var(--btn-primary-hover);
+}
+
+.btn-success, .btn-menu.btn-success {
+  background-color: var(--btn-success);
+}
+
+.btn-success:hover, .btn-menu.btn-success:hover {
+  background-color: var(--btn-success-hover);
+}
+
+.btn-danger, .btn-menu.btn-danger {
+  background-color: var(--btn-danger);
+}
+
+.btn-danger:hover, .btn-menu.btn-danger:hover {
+  background-color: var(--btn-danger-hover);
+}
+
+.btn-info, .btn-menu.btn-info {
+  background-color: var(--btn-info);
+}
+
+.btn-info:hover, .btn-menu.btn-info:hover {
+  background-color: var(--btn-info-hover);
+}
+
+.btn-warning, .btn-menu.btn-warning {
+  background-color: var(--btn-warning);
+  color: var(--text-color-inverse);
+}
+
+.btn-warning:hover, .btn-menu.btn-warning:hover {
+  background-color: var(--btn-warning-hover);
+}
+
+.btn-purple, .btn-menu.btn-purple {
+  background-color: var(--btn-purple);
+}
+
+.btn-purple:hover, .btn-menu.btn-purple:hover {
+  background-color: var(--btn-purple-hover);
+}
+
+/* Botones outline */
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid currentColor;
+}
+
+/* Efecto de onda al hacer clic */
+.btn-menu::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn-menu:focus:not(:active)::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* ======================
+   BOTONES DEL MENÚ PRINCIPAL
+   ====================== */
+.main-menu {
+  display: grid;
+  gap: var(--element-spacing);
+  margin: 2rem auto;
+  max-width: 800px;
+  grid-template-columns: 1fr;
+}
+
+.btn-menu {
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.btn-menu i {
+  font-size: 1.5rem;
+}
+
+.btn-outline-primary, .btn-outline-secondary {
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+/* ======================
+   EFECTOS ESPECIALES
+   ====================== */
+/* Efecto de pulso al cargar */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.loading .btn-menu {
+  animation: pulse 1.5s infinite;
+}
+
+/* Gradiente para botones activos */
+.btn-menu.active {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.363)
+  );
+}
+
+/* ======================
+   SWITCHER DE TEMA
+   ====================== */
+.theme-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-switcher button {
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bi {
+  font-size: 0.8em;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+}
+
+.logo {
+  height: 50px;
+  transition: all 0.3s ease;
+}
+
+/* ======================
+   MODOS DE VISUALIZACIÓN (MÓVIL vs PC)
+   ====================== */
+
+/* Estilos para PC */
+.desktop-view {
+  --font-size-base: 14px;
+  --element-spacing: 1.5rem;
+  --btn-padding: 1.5rem;
+  --btn-font-size: 1.2rem;
+  
+  .main-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .container {
+    padding: 2rem;
+  }
+  
+  /* Efectos especiales solo para desktop */
+  .btn-menu:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+}
+
+/* Botón de cambio de vista */
+#viewToggle {
+  z-index: 1000;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.icon-svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    margin-right: 0.3em;
+    fill: currentColor;
+    color: darkslategray;
+}
+
+/* Ícono diferente según el modo */
+.mobile-view #viewToggle i::before {
+  content: "\F3FC"; /* Icono de laptop */
+}
+
+.desktop-view #viewToggle i::before {
+  content: "\F3F1"; /* Icono de móvil */
+}
+
+/* ======================
+   AJUSTES RESPONSIVE
+   ====================== */
+@media (max-width: 768px) {
+  .btn, .btn-menu {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .main-menu {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .main-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .desktop-view .main-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

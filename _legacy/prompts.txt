@@ -1,0 +1,28 @@
+quiero hacer una webapp para registrar los tiempos de la categoria aparte campero.
+el reglamento de la categoria es: https://www.caballoscriollos.com/_recursos/archivos/20181101010330950.pdf
+y las modificaciones: https://www.caballoscriollos.com/web/noticias_detalle.php?IdNoticia=8
+Será una pagina inicial, donde haya botones a las siguientes paginas: Nuevo evento, ABM de equipos, Registro de Tiempos, Toma de Tiempos, Exportar datos.
+Nuevo evento borra todos los datos, previa advertencia con popup. Borra el local storage y el cache.
+ABM de Equipos, realizar la gestion de equipos como Alta, Modificacion y Baja o Borrado.
+Registro de tiempo tendra un desplegable donde elijo el equipo, tres botones para elegir la pasada, otra linea de 4 botones para la cantidad de vacas (3,2,1 o 0), por defecto es 3, un campo para poner el tiempo con el formato m.ss, luego una fila con 3 botones de penalizaciones de 10, 20 y 30 segundos y luego un boton de guardar. este boton guarda la informacion de esa pasada para ese equipo.
+Toma de tiempos es igual al anterior pero incluye un cronometro con botones de inicio, fin, limpiar. El cronometro aumenta de a 1 segundo.
+Exportar datos puede generar un archivo de salida a txt o llamar al mail con el txt adjunto.
+Todo se va almacenando en local storage.
+Se utilizará HTML, CSS y JS en archivos separados. Se puede utilizar bootstrap para mejorar la estetica.
+
+
+/campero-timer/
+├── index.html          # Página principal
+├── new-event.html      # Nuevo evento
+├── teams.html          # ABM de equipos
+├── register-time.html  # Registro de tiempos
+├── capture-time.html   # Toma de tiempos
+├── export-data.html    # Exportar datos
+├── css/
+│   └── style.css       # Estilos principales
+├── js/
+│   ├── main.js         # Funcionalidad principal
+│   ├── teams.js        # ABM de equipos
+│   ├── times.js        # Registro y toma de tiempos
+│   └── export.js       # Exportación de datos
+└── img
