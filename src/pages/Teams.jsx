@@ -7,21 +7,21 @@ import { Trash2, Edit2, Users, Plus } from 'lucide-react';
 export default function Teams() {
     const { teams, addTeam, updateTeam, deleteTeam } = useData();
     const [isEditing, setIsEditing] = useState(false);
-    const [currentTeam, setCurrentTeam] = useState({ id: '', name: '', number: '' });
+    const [currentTeam, setCurrentTeam] = useState({ id: '', name: '' });
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isEditing) {
-            updateTeam(currentTeam.id, { name: currentTeam.name, number: currentTeam.number });
+            updateTeam(currentTeam.id, { name: currentTeam.name });
             setIsEditing(false);
         } else {
-            addTeam({ name: currentTeam.name, number: currentTeam.number });
+            addTeam({ name: currentTeam.name });
         }
-        setCurrentTeam({ id: '', name: '', number: '' });
+        setCurrentTeam({ id: '', name: '' });
     };
 
     const handleEdit = (team) => {
-        setCurrentTeam(team);
+        setCurrentTeam({ id: team.id, name: team.name });
         setIsEditing(true);
     };
 
@@ -33,7 +33,7 @@ export default function Teams() {
 
     const handleCancel = () => {
         setIsEditing(false);
-        setCurrentTeam({ id: '', name: '', number: '' });
+        setCurrentTeam({ id: '', name: '' });
     };
 
     return (
@@ -56,19 +56,6 @@ export default function Teams() {
                             {isEditing ? 'Editar Equipo' : 'Nuevo Equipo'}
                         </h3>
                         <form onSubmit={handleSubmit} className="space-y-4">
-                            <div>
-                                <label className="block text-xs font-bold text-secondary-500 uppercase mb-1">
-                                    Número
-                                </label>
-                                <input
-                                    type="number"
-                                    required
-                                    value={currentTeam.number}
-                                    onChange={(e) => setCurrentTeam({ ...currentTeam, number: e.target.value })}
-                                    className="input-modern"
-                                    placeholder="#"
-                                />
-                            </div>
                             <div>
                                 <label className="block text-xs font-bold text-secondary-500 uppercase mb-1">
                                     Nombre del Equipo
@@ -99,11 +86,11 @@ export default function Teams() {
 
                 <div className="lg:col-span-2">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {teams.map((team) => (
+                        {teams.map((team, idx) => (
                             <Card key={team.id} className="group hover:border-primary-200 dark:hover:border-primary-800 transition-all">
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <div className="text-xs font-bold text-secondary-400 uppercase mb-1">Equipo {team.number}</div>
+                                        <div className="text-xs font-bold text-secondary-400 uppercase mb-1">Equipo {idx + 1}</div>
                                         <div className="text-lg font-bold text-secondary-900 dark:text-white">{team.name}</div>
                                     </div>
                                     <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">

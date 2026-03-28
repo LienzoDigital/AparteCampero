@@ -28,7 +28,12 @@ export function DataProvider({ children }) {
     }, [times]);
 
     const addTeam = (team) => {
-        setTeams(prev => [...prev, { ...team, id: Date.now().toString() }]);
+        setTeams(prev => {
+            const nextNumber = prev.length > 0 
+                ? Math.max(...prev.map(t => parseInt(t.number) || 0)) + 1 
+                : 1;
+            return [...prev, { ...team, number: nextNumber.toString(), id: Date.now().toString() }];
+        });
     };
 
     const updateTeam = (id, updatedTeam) => {
