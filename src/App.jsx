@@ -16,7 +16,7 @@ function App() {
   return (
     <ThemeProvider>
       <DataProvider>
-        <Router>
+        <Router basename={import.meta.env.BASE_URL}>
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />

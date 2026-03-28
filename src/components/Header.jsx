@@ -24,7 +24,7 @@ export default function Header() {
                     <Link to="/" className="flex items-center gap-3 group">
                         <div className="relative">
                             <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-info rounded-full blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
-                            <img src="/assets/horse-logo.png" alt="Logo" className="relative h-10 w-10 object-contain" />
+                            <img src={`${import.meta.env.BASE_URL}assets/horse-logo.png`} alt="Logo" className="relative h-10 w-10 object-contain" />
                         </div>
                         <span className="font-bold text-xl tracking-tight text-secondary-900 dark:text-white">
                             Aparte<span className="text-secondary-500">Campero</span>
