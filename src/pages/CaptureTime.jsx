@@ -6,7 +6,7 @@ import { formatTime } from '../utils/format';
 import { Play, Square, RotateCcw, Clock, AlertCircle } from 'lucide-react';
 
 export default function CaptureTime() {
-    const { teams, saveTime } = useData();
+    const { teams, saveTime, times } = useData();
     const [selectedTeam, setSelectedTeam] = useState('');
     const [pass, setPass] = useState(1);
     const [cows, setCows] = useState(3);
@@ -43,6 +43,17 @@ export default function CaptureTime() {
             return;
         }
 
+        // Verificar si ya existe un tiempo para esta pasada
+        if (times[selectedTeam] && times[selectedTeam][`pass${pass}`]) {
+            const errorMsg = `Ya existe un tiempo guardado para el Equipo ${selectedTeam} en la Pasada ${pass}. No se puede sobreescribir.`;
+            alert(errorMsg);
+            setMessage({ 
+                type: 'error', 
+                text: errorMsg
+            });
+            return;
+        }
+
         const totalTime = seconds + penalty;
         saveTime(selectedTeam, pass, {
             cows,
@@ -56,7 +67,7 @@ export default function CaptureTime() {
         });
 
         handleReset();
-        setTimeout(() => setMessage(null), 3000);
+        setTimeout(() => setMessage(null), 4000);
     };
 
     return (

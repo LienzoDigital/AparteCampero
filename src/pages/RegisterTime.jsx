@@ -6,7 +6,7 @@ import { formatTime, parseTime } from '../utils/format';
 import { Timer, AlertCircle } from 'lucide-react';
 
 export default function RegisterTime() {
-    const { teams, saveTime } = useData();
+    const { teams, saveTime, times } = useData();
     const [selectedTeam, setSelectedTeam] = useState('');
     const [pass, setPass] = useState(1);
     const [cows, setCows] = useState(3);
@@ -19,6 +19,17 @@ export default function RegisterTime() {
         e.preventDefault();
         if (!selectedTeam) {
             setMessage({ type: 'error', text: 'Seleccione un equipo' });
+            return;
+        }
+
+        // Verificar si ya existe un tiempo para esta pasada
+        if (times[selectedTeam] && times[selectedTeam][`pass${pass}`]) {
+            const errorMsg = `Ya existe un tiempo guardado para este equipo en la Pasada ${pass}. No se puede sobreescribir.`;
+            alert(errorMsg);
+            setMessage({ 
+                type: 'error', 
+                text: errorMsg
+            });
             return;
         }
 
