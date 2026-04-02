@@ -11,6 +11,7 @@ import CaptureTime from './pages/CaptureTime';
 import EditTimes from './pages/EditTimes';
 import Results from './pages/Results';
 import ExportData from './pages/ExportData';
+import Instructions from './pages/Instructions';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/edit-times" element={<EditTimes />} />
               <Route path="/results" element={<Results />} />
               <Route path="/export-data" element={<ExportData />} />
+              <Route path="/instructions" element={<Instructions />} />
             </Routes>
           </Layout>
         </Router>

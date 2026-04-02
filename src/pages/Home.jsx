@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Trash2, Users, Timer, PlayCircle, Edit, Trophy, Download, ChevronRight } from 'lucide-react';
+import { Trash2, Users, Timer, PlayCircle, Edit, Trophy, Download, ChevronRight, BookOpen } from 'lucide-react';
 
 const menuItems = [
     {
@@ -73,6 +73,16 @@ const menuItems = [
         border: 'border-danger/20',
         hover: 'hover:border-danger/50'
     },
+    {
+        to: '/instructions',
+        label: 'Instrucciones de Uso',
+        description: 'Guía paso a paso',
+        icon: BookOpen,
+        color: 'text-primary-600',
+        bg: 'bg-white dark:bg-secondary-800',
+        border: 'border-primary-600/30',
+        hover: 'hover:border-primary-600/60'
+    }
 ];
 
 export default function Home() {
